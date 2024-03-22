@@ -5,16 +5,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-
-	"github.com/sayam-em/Go_CRUD/DB"
-	"github.com/sayam-em/Go_CRUD/Err"
+	Err "github.com/sayam-em/Go_CRUD/err"
+	Conn "github.com/sayam-em/Go_CRUD/db"
 )
 
 func createUserHandler() {
 
 	db, err := sql.Open(Conn.dbDriver,Conn.dbUser+":"+Conn.dbPass+"@/"+Conn.dbName )
 	if err != nil {
-		Err.CheckErr(err)
+		Err.LogErr(err)
 	}
 
 	defer db.Close()

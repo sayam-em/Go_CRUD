@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"
-	"github.com/sayam-em/Go_CRUD/Err"
+	"github.com/sayam-em/Go_CRUD/err"
 )
 
 type DB struct {
@@ -24,10 +24,10 @@ func init() {
 	dbInfo := fmt.Sprintf("user=%s password=%s dbname=%s dbdriver=%s host=%s port=%s sslmode=disable", dbUser, dbPass, dbName, dbDriver, host, port)
 
 	db, err := NewDb(dbInfo)
-	Err.CheckErr(err)
+	Err.LogErr(err)
 
 	rows, err := db.Query("SELECT * from users")
-	Err.CheckErr(err)
+	Err.LogErr(err)
 
 	fmt.Println(rows)
 }
