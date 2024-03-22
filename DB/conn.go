@@ -12,7 +12,7 @@ type DB struct {
 }
 
 var (
-	DbDriver = "postgres"
+	dbDriver = "postgres"
 	dbUser   = "dbUser"
 	dbPass   = "dbPass"
 	dbName   = "gocrud_app"
@@ -21,7 +21,7 @@ var (
 )
 
 func init() {
-	dbInfo := fmt.Sprintf("user=%s password=%s dbname=%s dbdriver=%s host=%s port=%s sslmode=disable", dbUser, dbPass, dbName, DbDriver, host, port)
+	dbInfo := fmt.Sprintf("user=%s password=%s dbname=%s dbdriver=%s host=%s port=%s sslmode=disable", dbUser, dbPass, dbName, dbDriver, host, port)
 
 	db, err := NewDb(dbInfo)
 	Err.CheckErr(err)
