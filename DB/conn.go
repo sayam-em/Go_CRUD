@@ -5,7 +5,7 @@ import (
 	"fmt"
 	_ "github.com/lib/pq"
 	"github.com/sayam-em/Go_CRUD/Err"
-	
+
 )
 
 type DB struct {
@@ -13,16 +13,16 @@ type DB struct {
 }
 
 var (
-	dbDriver = "postgres"
-	dbUser   = "dbUser"
-	dbPass   = "dbPass"
-	dbName   = "gocrud_app"
-	host     = "localhost"
-	port     = "5432"
+	DbDriver = "postgres"
+	DbUser   = "dbUser"
+	DbPass   = "dbPass"
+	DbName   = "gocrud_app"
+	Host     = "localhost"
+	Port     = "5432"
 )
 
 func init() {
-	dbInfo := fmt.Sprintf("user=%s password=%s dbname=%s dbdriver=%s host=%s port=%s sslmode=disable", dbUser, dbPass, dbName, dbDriver, host, port)
+	dbInfo := fmt.Sprintf("user=%s password=%s dbname=%s dbdriver=%s host=%s port=%s sslmode=disable", DbUser, DbPass, DbName, DbDriver, Host, Port)
 
 	db, err := NewDb(dbInfo)
 	Err.LogErr(err)

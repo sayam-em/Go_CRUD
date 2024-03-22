@@ -5,14 +5,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"github.com/sayam-em/Go_CRUD/Err"
-	"github.com/sayam-em/Go_CRUD/DB"
-	"github.com/sayam-em/Go_CRUD/DB"
+
+	Conn "github.com/sayam-em/Go_CRUD/Conn"
+	Err "github.com/sayam-em/Go_CRUD/Err"
 )
 
-func createUserHandler() {
+func createUserHandler(w http.ResponseWriter, r *http.Request) {
 
-	db, err := sql.Open(Conn.dbDriver,Conn.dbUser+":"+Conn.dbPass+"@/"+Conn.dbName )
+	db, err := sql.Open(Conn.DB.DbDriver, Conn.dbUser+":"+Conn.dbPass+"@/"+Conn.dbName)
 	if err != nil {
 		Err.LogErr(err)
 	}
@@ -20,7 +20,7 @@ func createUserHandler() {
 	defer db.Close()
 
 	var user User
-	json.NewDecoder(r.Body, user.Email)
+	json.NewDecoder(r.Body).Decode(user.Email)
 
 	if err != nil {
 		http.Error(w, "failed to create user", http.StatusInternalServerError)
@@ -28,8 +28,5 @@ func createUserHandler() {
 
 	w.WriteHeader(http.StatusCreated)
 	fmt.Fprintln(w, "user created")
-
-
-
 
 }
