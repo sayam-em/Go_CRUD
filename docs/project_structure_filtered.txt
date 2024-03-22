@@ -1,0 +1,17 @@
+--- Folder Structure ---
+[DB]
+    └── conn.go
+[docs]
+    └── .project_structure_filter
+[Err]
+    └── err.go
+go.mod
+go.sum
+GoLangCrud.go
+[Handlers]
+    ├── createUserHandler.go
+    ├── deleteUserHandler.go
+    ├── getUserHandler.go
+    └── putUserHandler.go
+
+--- File Contents ---

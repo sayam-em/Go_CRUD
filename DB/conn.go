@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"
-	"github.com/sayam-em/Go_CRUD/util"
+	"../Err/err"
 	
   )
 
