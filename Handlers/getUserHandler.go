@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"errors"
 
-	Conn "github.com/sayam-em/Go_CRUD/db"
-	Err "github.com/sayam-em/Go_CRUD/err"
+	Conn "github.com/sayam-em/Go_CRUD/DB"
+	Err "github.com/sayam-em/Go_CRUD/Err"
 
 )
 

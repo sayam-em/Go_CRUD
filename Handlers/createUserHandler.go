@@ -5,8 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	Err "github.com/sayam-em/Go_CRUD/err"
-	Conn "github.com/sayam-em/Go_CRUD/db"
+	"github.com/sayam-em/Go_CRUD/Err"
+	"github.com/sayam-em/Go_CRUD/DB"
+	"github.com/sayam-em/Go_CRUD/DB"
 )
 
 func createUserHandler() {

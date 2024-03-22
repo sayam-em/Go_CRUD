@@ -4,7 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"
-	"github.com/sayam-em/Go_CRUD/err"
+	"github.com/sayam-em/Go_CRUD/Err"
+	
 )
 
 type DB struct {
