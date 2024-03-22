@@ -3,20 +3,21 @@ package main
 import (
 	"log"
 	"net/http"
-    "github.com/gorilla/mux"
 
+	"github.com/gorilla/mux"
+	handler "github.com/sayam-em/Go_CRUD/Handlers"
 )
 
 func main()  {
 	r := mux.NewRouter()
 
-	r.HandleFunc("/user", createUserHandler).Methods("POST")
+	r.HandleFunc("/user", handler.CreateUserHandler).Methods("POST")
 
-	r.HandleFunc("/user", getUserHandler).Methods("GET")
+	r.HandleFunc("/user", handler.GetUserHandler).Methods("GET")
 
-	r.HandleFunc("/user", putUserHandler).Methods("PUT")
+	r.HandleFunc("/user", handler.PutUserHandler).Methods("PUT")
 
-	r.HandleFunc("/user", deleteUserHandler).Methods("DELETE")
+	r.HandleFunc("/user", handler.DeleteUserHandler).Methods("DELETE")
 
 
 	log.Println("server is running on port :8090")

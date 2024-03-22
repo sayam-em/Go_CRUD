@@ -1,11 +1,12 @@
+// Conn package
 package Conn
 
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/lib/pq"
-	"github.com/sayam-em/Go_CRUD/Err"
+	"log"
 
+	_ "github.com/lib/pq"
 )
 
 type DB struct {
@@ -13,24 +14,37 @@ type DB struct {
 }
 
 var (
-	DbDriver = "postgres"
-	DbUser   = "dbUser"
-	DbPass   = "dbPass"
-	DbName   = "gocrud_app"
-	Host     = "localhost"
-	Port     = "5432"
+	DbUser = "postgres"
+	DbPass = "password"
+	DbName = "postgres"
+	Host   = "localhost"
+	Port   = "5432"
 )
 
 func init() {
-	dbInfo := fmt.Sprintf("user=%s password=%s dbname=%s dbdriver=%s host=%s port=%s sslmode=disable", DbUser, DbPass, DbName, DbDriver, Host, Port)
+	dbInfo := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%s sslmode=disable", DbUser, DbPass, DbName, Host, Port)
 
-	db, err := NewDb(dbInfo)
-	Err.LogErr(err)
+	db, err := sql.Open("postgres", dbInfo)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = db.Ping()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer db.Close()
 
 	rows, err := db.Query("SELECT * from users")
-	Err.LogErr(err)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
 
-	fmt.Println(rows)
+	if err = rows.Err(); err != nil {
+		log.Fatal(err)
+	}
 }
 
 func NewDb(dataSourceName string) (*DB, error) {
